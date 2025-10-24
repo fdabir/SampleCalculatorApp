@@ -43,11 +43,6 @@ jobs:
             Write-Host "No test project found, skipping tests."
           }
 
-      # Step 6 — Install WiX Toolset (via Chocolatey)
-      - name: Install WiX Toolset
-        run: |
-          choco install wixtoolset --version=3.14.0 --no-progress -y
-
       # Step 7 — Build MSI using WiX
       - name: Build MSI Installer
         shell: pwsh
