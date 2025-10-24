@@ -23,14 +23,17 @@ jobs:
 
       # Step 3 — Restore dependencies
       - name: Restore dependencies
-        run: dotnet restore CalculatorApp.sln
+        working-directory: CalculatorApp
+        run: dotnet restore
 
       # Step 4 — Build project in Release mode
       - name: Build project
+        working-directory: CalculatorApp
         run: dotnet build --configuration Release --no-restore
 
       # Step 5 — Run unit tests (if present)
       - name: Run tests
+        working-directory: CalculatorApp
         shell: pwsh
         run: |
           if (Test-Path "CalculatorApp.Tests") {
@@ -54,7 +57,7 @@ jobs:
           light.exe Product.wixobj -o CalculatorApp.msi
           cd ..
 
-      # Step 8 — Upload MSI artifact (latest syntax)
+      # Step 8 — Upload MSI artifact
       - name: Upload MSI artifact
         uses: actions/upload-artifact@v4
         with:
