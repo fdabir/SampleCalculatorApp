@@ -23,7 +23,7 @@ jobs:
 
       # Step 3 — Restore dependencies
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore CalculatorApp.sln
 
       # Step 4 — Build project in Release mode
       - name: Build project
