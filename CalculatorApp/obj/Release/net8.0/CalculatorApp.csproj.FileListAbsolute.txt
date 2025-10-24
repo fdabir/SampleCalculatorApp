@@ -1,0 +1,15 @@
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\bin\Release\net8.0\CalculatorApp.exe
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\bin\Release\net8.0\CalculatorApp.deps.json
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\bin\Release\net8.0\CalculatorApp.runtimeconfig.json
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\bin\Release\net8.0\CalculatorApp.dll
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\bin\Release\net8.0\CalculatorApp.pdb
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\obj\Release\net8.0\CalculatorApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\obj\Release\net8.0\CalculatorApp.AssemblyInfoInputs.cache
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\obj\Release\net8.0\CalculatorApp.AssemblyInfo.cs
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\obj\Release\net8.0\CalculatorApp.csproj.CoreCompileInputs.cache
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\obj\Release\net8.0\CalculatorApp.sourcelink.json
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\obj\Release\net8.0\CalculatorApp.dll
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\obj\Release\net8.0\refint\CalculatorApp.dll
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\obj\Release\net8.0\CalculatorApp.pdb
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\obj\Release\net8.0\CalculatorApp.genruntimeconfig.cache
+C:\LearnCICD\SampleCalculatorApp\CalculatorApp\obj\Release\net8.0\ref\CalculatorApp.dll

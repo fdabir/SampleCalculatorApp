@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Name="CalculatorApp"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="FarheenDabir"
+           UpgradeCode="a1b2c3d4-e5f6-4712-890a-123456789abc">
+
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <!-- ADD THIS MEDIA ELEMENT -->
+    <Media Id="1" Cabinet="product.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="CalculatorApp"/>
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="MainExecutable" Guid="b1c2d3e4-f5a6-7890-ab12-3456789cdef0">
+        <File Source="..\CalculatorApp\bin\Release\net8.0\CalculatorApp.exe"/>
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="MainFeature" Title="CalculatorApp" Level="1">
+      <ComponentRef Id="MainExecutable"/>
+    </Feature>
+  </Product>
+</Wix>
