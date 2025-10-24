@@ -6,7 +6,7 @@ namespace CalculatorApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Simple Calculator");
+            Console.WriteLine("Simple Calculator app");
             Console.WriteLine("Enter first number:");
             double a = double.Parse(Console.ReadLine());
 
