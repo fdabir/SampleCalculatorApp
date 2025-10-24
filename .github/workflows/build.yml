@@ -1,0 +1,47 @@
+name: Build and Package CalculatorApp
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Setup .NET 8 SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore CalculatorApp.sln
+
+    - name: Build Solution
+      run: dotnet build CalculatorApp.sln -c Release --no-restore
+
+    - name: Run Unit Tests
+      run: dotnet test CalculatorApp.sln -c Release --no-build
+
+    - name: Install WiX Toolset
+      run: |
+        choco install wixtoolset --version=3.14.1 -y
+        refreshenv
+
+    - name: Build MSI Installer
+      working-directory: Installer
+      run: |
+        candle.exe Product.wxs
+        light.exe Product.wixobj -o CalculatorApp.msi
+
+    - name: Upload MSI Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: CalculatorApp-MSI
+        path: Installer/CalculatorApp.msi
