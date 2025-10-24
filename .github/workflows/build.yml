@@ -11,40 +11,52 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      # Step 1: Checkout repository
+      # Step 1 — Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Setup .NET SDK
+      # Step 2 — Setup .NET SDK
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
 
-      # Step 3: Restore dependencies
+      # Step 3 — Restore dependencies
       - name: Restore dependencies
         run: dotnet restore
 
-      # Step 4: Build project in Release mode
+      # Step 4 — Build project in Release mode
       - name: Build project
         run: dotnet build --configuration Release --no-restore
 
-      # Step 5: Run tests (if a test project exists)
+      # Step 5 — Run unit tests (if present)
       - name: Run tests
+        shell: pwsh
         run: |
           if (Test-Path "CalculatorApp.Tests") {
+            Write-Host "Running test project..."
             dotnet test --no-build --verbosity normal
           } else {
-            echo "No test project found, skipping tests."
+            Write-Host "No test project found, skipping tests."
           }
 
-      # Step 6: Install WiX Toolset
+      # Step 6 — Install WiX Toolset (via Chocolatey)
       - name: Install WiX Toolset
         run: |
           choco install wixtoolset --version=3.14.0 --no-progress -y
 
-      # Step 7: Build MSI Installer
+      # Step 7 — Build MSI using WiX
       - name: Build MSI Installer
+        shell: pwsh
         run: |
           cd Installer
           candle.exe Product.wxs -o Product.wixobj
+          light.exe Product.wixobj -o CalculatorApp.msi
+          cd ..
+
+      # Step 8 — Upload MSI artifact (latest syntax)
+      - name: Upload MSI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CalculatorAppInstaller
+          path: Installer/CalculatorApp.msi
